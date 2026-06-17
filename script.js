@@ -446,14 +446,6 @@ const optionSets = {
     ["friend_agent", "Friend or agent"],
     ["other", "Other"]
   ],
-  monthlySpend: [
-    ["under_10_sgd", "Under S$10"],
-    ["10_19_sgd", "S$10-19"],
-    ["20_29_sgd", "S$20-29"],
-    ["30_49_sgd", "S$30-49"],
-    ["50_plus_sgd", "S$50+"],
-    ["not_sure", "Not sure"]
-  ],
   importantFeatures: [
     ["low_price", "Low price"],
     ["calling_home", "Calling family at home"],
@@ -920,7 +912,6 @@ function translatePage() {
   renderOptions("workSector", optionSets.workSector);
   renderOptions("currentTelco", optionSets.currentTelco);
   renderOptions("billPayer", optionSets.billPayer);
-  renderOptions("monthlySpend", optionSets.monthlySpend);
   renderOptions("marketingSource", optionSets.marketingSource);
   renderOptions("topExpense", optionSets.topExpense);
   renderOptions("restDayPlace", optionSets.restDayPlace);
@@ -936,7 +927,6 @@ function renderStaticData() {
   renderOptions("workSector", optionSets.workSector);
   renderOptions("currentTelco", optionSets.currentTelco);
   renderOptions("billPayer", optionSets.billPayer);
-  renderOptions("monthlySpend", optionSets.monthlySpend);
   renderOptions("marketingSource", optionSets.marketingSource);
   renderOptions("topExpense", optionSets.topExpense);
   renderOptions("restDayPlace", optionSets.restDayPlace);
@@ -1054,7 +1044,7 @@ function buildPayload() {
     bill_payer_en: optionLabel("billPayer", billPayer),
     bill_payer_other_raw: getOtherValue("billPayerOther"),
     monthly_spend: monthlySpend,
-    monthly_spend_en: optionLabel("monthlySpend", monthlySpend),
+    monthly_spend_en: monthlySpend,
     important_features_ranked: featureRanking,
     important_features_ranked_en: formatFeatureRanking(featureRanking),
     marketing_source: marketingSource,
