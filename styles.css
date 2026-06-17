@@ -140,6 +140,14 @@ form {
   gap: 8px;
 }
 
+.other-field {
+  display: none;
+}
+
+.other-field.is-visible {
+  display: grid;
+}
+
 .field > span,
 legend {
   color: var(--ink);

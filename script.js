@@ -42,6 +42,8 @@ const translations = {
     regularSpendLabel: "What do you regularly spend money on? Select all that apply.",
     incentiveLabel: "Which gift or incentive would be most useful to you?",
     messagingLabel: "Which messaging platform do you use the most?",
+    otherSpecifyLabel: "Please specify",
+    rechargeLabel: "Where would your top choice be to recharge your mobile? Select all that apply.",
     feedbackLabel: "Do you face any problem with your mobile network or recharge?",
     submit: "Submit survey",
     requiredError: "Please answer all required questions.",
@@ -73,6 +75,7 @@ const translations = {
     regularSpendLabel: "आप किन चीजों पर नियमित रूप से पैसा खर्च करते हैं? जो लागू हों चुनें।",
     incentiveLabel: "कौन सा गिफ्ट या इनाम आपके लिए सबसे उपयोगी होगा?",
     messagingLabel: "आप सबसे ज्यादा कौन सा मैसेजिंग ऐप इस्तेमाल करते हैं?",
+    otherSpecifyLabel: "कृपया बताएं",
     feedbackLabel: "क्या मोबाइल नेटवर्क या रिचार्ज में कोई समस्या आती है?",
     submit: "सर्वे जमा करें",
     requiredError: "कृपया सभी जरूरी सवालों के जवाब दें।",
@@ -104,6 +107,7 @@ const translations = {
     regularSpendLabel: "আপনি নিয়মিত কোন জিনিসে টাকা খরচ করেন? সব প্রযোজ্য বেছে নিন।",
     incentiveLabel: "কোন উপহার বা ইনসেনটিভ আপনার কাছে সবচেয়ে কাজে লাগবে?",
     messagingLabel: "আপনি সবচেয়ে বেশি কোন মেসেজিং প্ল্যাটফর্ম ব্যবহার করেন?",
+    otherSpecifyLabel: "অনুগ্রহ করে লিখুন",
     feedbackLabel: "মোবাইল নেটওয়ার্ক বা রিচার্জ নিয়ে কোনো সমস্যা হয় কি?",
     submit: "জরিপ জমা দিন",
     requiredError: "অনুগ্রহ করে সব জরুরি প্রশ্নের উত্তর দিন।",
@@ -135,6 +139,7 @@ const translations = {
     regularSpendLabel: "您经常在哪些方面花钱？请选择所有适用项。",
     incentiveLabel: "哪种礼品或奖励对您最有用？",
     messagingLabel: "您最常使用哪个聊天平台？",
+    otherSpecifyLabel: "请注明",
     feedbackLabel: "您的手机网络或充值是否遇到任何问题？",
     submit: "提交问卷",
     requiredError: "请回答所有必填问题。",
@@ -495,7 +500,20 @@ const optionSets = {
     ["health_medicine", "Health or medicine"],
     ["entertainment", "Entertainment"],
     ["shopping", "Shopping"],
-    ["debt_loan", "Debt or loan payment"]
+    ["debt_loan", "Debt or loan payment"],
+    ["other", "Other"]
+  ],
+  rechargeChannels: [
+    ["convenience_store", "Convenience store"],
+    ["dorms", "Dorms"],
+    ["retail_shops", "Retail shops"],
+    ["agent", "Agent"],
+    ["roadshows", "Roadshows"],
+    ["app", "App"],
+    ["atms_axs", "ATMs / AXS"],
+    ["self_serve", "Self-serve"],
+    ["in_person", "In person"],
+    ["other", "Other"]
   ],
   preferredIncentive: [
     ["mobile_data", "Extra mobile data"],
@@ -824,6 +842,17 @@ const state = {
   language: localStorage.getItem("surveyLanguage") || "hi"
 };
 
+const otherFieldMap = {
+  workSector: "workSectorOther",
+  currentTelco: "currentTelcoOther",
+  billPayer: "billPayerOther",
+  marketingSource: "marketingSourceOther",
+  topExpense: "topExpenseOther",
+  restDayPlace: "restDayPlaceOther",
+  preferredIncentive: "preferredIncentiveOther",
+  messagingPlatform: "messagingPlatformOther"
+};
+
 const $ = (selector) => document.querySelector(selector);
 const t = (key) => (translations[state.language] && translations[state.language][key]) || translations.en[key] || key;
 
@@ -899,6 +928,7 @@ function translatePage() {
   renderOptions("messagingPlatform", optionSets.messagingPlatform);
   renderFeatureRankings();
   renderCheckboxGroup("regularSpendCategories", "regular_spend_categories", optionSets.regularSpendCategories);
+  renderCheckboxGroup("rechargeChannels", "recharge_channels", optionSets.rechargeChannels);
 }
 
 function renderStaticData() {
@@ -914,6 +944,7 @@ function renderStaticData() {
   renderOptions("messagingPlatform", optionSets.messagingPlatform);
   renderFeatureRankings();
   renderCheckboxGroup("regularSpendCategories", "regular_spend_categories", optionSets.regularSpendCategories);
+  renderCheckboxGroup("rechargeChannels", "recharge_channels", optionSets.rechargeChannels);
   $("#originOptions").innerHTML = originSuggestions.map((item) => `<option value="${item}"></option>`).join("");
   translatePage();
 }
@@ -922,6 +953,43 @@ function setStatus(message, type) {
   const status = $("#statusMessage");
   status.textContent = message;
   status.className = `status is-visible is-${type}`;
+}
+
+function updateOtherFields() {
+  Object.entries(otherFieldMap).forEach(([selectId, inputId]) => {
+    const select = $(`#${selectId}`);
+    const input = $(`#${inputId}`);
+    const wrapper = document.querySelector(`[data-other-for="${selectId}"]`);
+    if (!select || !input || !wrapper) return;
+
+    const isOther = select.value === "other";
+    wrapper.classList.toggle("is-visible", isOther);
+    input.required = isOther;
+    if (!isOther) input.value = "";
+  });
+
+  const regularSpendOther = $("#regularSpendOther");
+  const regularSpendOtherField = $("#regularSpendOtherField");
+  if (regularSpendOther && regularSpendOtherField) {
+    const needsRegularSpendOther = getCheckedValues("regular_spend_categories").indexOf("other") !== -1;
+    regularSpendOtherField.classList.toggle("is-visible", needsRegularSpendOther);
+    regularSpendOther.required = needsRegularSpendOther;
+    if (!needsRegularSpendOther) regularSpendOther.value = "";
+  }
+
+  const rechargeChannelOther = $("#rechargeChannelOther");
+  const rechargeChannelOtherField = $("#rechargeChannelOtherField");
+  if (rechargeChannelOther && rechargeChannelOtherField) {
+    const needsRechargeOther = getCheckedValues("recharge_channels").indexOf("other") !== -1;
+    rechargeChannelOtherField.classList.toggle("is-visible", needsRechargeOther);
+    rechargeChannelOther.required = needsRechargeOther;
+    if (!needsRechargeOther) rechargeChannelOther.value = "";
+  }
+}
+
+function getOtherValue(inputId) {
+  const input = $(`#${inputId}`);
+  return input ? input.value.trim() : "";
 }
 
 function validatePhone(phone) {
@@ -968,6 +1036,7 @@ function buildPayload() {
   const preferredIncentive = $("#preferredIncentive").value;
   const messagingPlatform = $("#messagingPlatform").value;
   const regularSpendCategories = getCheckedValues("regular_spend_categories");
+  const rechargeChannels = getCheckedValues("recharge_channels");
 
   return {
     submitted_at: new Date().toISOString(),
@@ -977,27 +1046,39 @@ function buildPayload() {
     origin_state_raw: $("#originState").value.trim(),
     work_sector: workSector,
     work_sector_en: optionLabel("workSector", workSector),
+    work_sector_other_raw: getOtherValue("workSectorOther"),
     current_telco: currentTelco,
     current_telco_en: optionLabel("currentTelco", currentTelco),
+    current_telco_other_raw: getOtherValue("currentTelcoOther"),
     bill_payer: billPayer,
     bill_payer_en: optionLabel("billPayer", billPayer),
+    bill_payer_other_raw: getOtherValue("billPayerOther"),
     monthly_spend: monthlySpend,
     monthly_spend_en: optionLabel("monthlySpend", monthlySpend),
     important_features_ranked: featureRanking,
     important_features_ranked_en: formatFeatureRanking(featureRanking),
     marketing_source: marketingSource,
     marketing_source_en: optionLabel("marketingSource", marketingSource),
+    marketing_source_other_raw: getOtherValue("marketingSourceOther"),
     top_expense: topExpense,
     top_expense_en: optionLabel("topExpense", topExpense),
+    top_expense_other_raw: getOtherValue("topExpenseOther"),
     rest_day_place: restDayPlace,
     rest_day_place_en: optionLabel("restDayPlace", restDayPlace),
+    rest_day_place_other_raw: getOtherValue("restDayPlaceOther"),
     regular_spend_categories: regularSpendCategories,
     regular_spend_categories_en: regularSpendCategories.map((item) => optionLabel("regularSpendCategories", item)),
+    regular_spend_other_raw: regularSpendCategories.indexOf("other") !== -1 ? getOtherValue("regularSpendOther") : "",
+    recharge_channels: rechargeChannels,
+    recharge_channels_en: rechargeChannels.map((item) => optionLabel("rechargeChannels", item)),
+    recharge_channel_other_raw: rechargeChannels.indexOf("other") !== -1 ? getOtherValue("rechargeChannelOther") : "",
     preferred_incentive: preferredIncentive,
     preferred_incentive_en: optionLabel("preferredIncentive", preferredIncentive),
+    preferred_incentive_other_raw: getOtherValue("preferredIncentiveOther"),
     messaging_platform: messagingPlatform,
     messaging_platform_en: optionLabel("messagingPlatform", messagingPlatform),
-    worker_feedback_raw: $("#workerFeedback").value.trim()
+    messaging_platform_other_raw: getOtherValue("messagingPlatformOther"),
+    worker_feedback_raw: getOtherValue("rechargeChannelOther")
   };
 }
 
@@ -1028,7 +1109,16 @@ function bindEvents() {
     state.language = event.target.value;
     localStorage.setItem("surveyLanguage", state.language);
     translatePage();
+    updateOtherFields();
   });
+
+  Object.keys(otherFieldMap).forEach((selectId) => {
+    const select = $(`#${selectId}`);
+    if (select) select.addEventListener("change", updateOtherFields);
+  });
+
+  $("#regularSpendCategories").addEventListener("change", updateOtherFields);
+  $("#rechargeChannels").addEventListener("change", updateOtherFields);
 
   $("#surveyForm").addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -1060,6 +1150,7 @@ function bindEvents() {
       setStatus(result.localOnly ? t("localSaved") : t("success"), "success");
       resetForm();
       $("#languageSelect").value = state.language;
+      updateOtherFields();
     } catch (error) {
       console.error(error);
       setStatus(t("submitError"), "error");
@@ -1071,3 +1162,4 @@ function bindEvents() {
 
 renderStaticData();
 bindEvents();
+updateOtherFields();

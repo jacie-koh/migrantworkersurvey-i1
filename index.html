@@ -53,15 +53,27 @@
             <span data-i18n="sectorLabel">What sector do you work in?</span>
             <select id="workSector" name="work_sector" required></select>
           </label>
+          <label class="field other-field" data-other-for="workSector">
+            <span data-i18n="otherSpecifyLabel">Please specify</span>
+            <input id="workSectorOther" name="work_sector_other">
+          </label>
 
           <label class="field">
             <span data-i18n="telcoLabel">What SIM or mobile network are you currently using?</span>
             <select id="currentTelco" name="current_telco" required></select>
           </label>
+          <label class="field other-field" data-other-for="currentTelco">
+            <span data-i18n="otherSpecifyLabel">Please specify</span>
+            <input id="currentTelcoOther" name="current_telco_other">
+          </label>
 
           <label class="field">
             <span data-i18n="payerLabel">Who pays for your mobile recharges?</span>
             <select id="billPayer" name="bill_payer" required></select>
+          </label>
+          <label class="field other-field" data-other-for="billPayer">
+            <span data-i18n="otherSpecifyLabel">Please specify</span>
+            <input id="billPayerOther" name="bill_payer_other">
           </label>
 
           <label class="field">
@@ -79,35 +91,64 @@
             <span data-i18n="sourceLabel">How do you find out about new offers, SIM deals, or updates?</span>
             <select id="marketingSource" name="marketing_source" required></select>
           </label>
+          <label class="field other-field" data-other-for="marketingSource">
+            <span data-i18n="otherSpecifyLabel">Please specify</span>
+            <input id="marketingSourceOther" name="marketing_source_other">
+          </label>
 
           <label class="field">
             <span data-i18n="expenseLabel">Besides food and housing, what do you spend the most money on?</span>
             <select id="topExpense" name="top_expense" required></select>
+          </label>
+          <label class="field other-field" data-other-for="topExpense">
+            <span data-i18n="otherSpecifyLabel">Please specify</span>
+            <input id="topExpenseOther" name="top_expense_other">
           </label>
 
           <label class="field">
             <span data-i18n="placesLabel">Where do you usually go on rest days?</span>
             <select id="restDayPlace" name="rest_day_place" required></select>
           </label>
+          <label class="field other-field" data-other-for="restDayPlace">
+            <span data-i18n="otherSpecifyLabel">Please specify</span>
+            <input id="restDayPlaceOther" name="rest_day_place_other">
+          </label>
 
           <fieldset class="field check-field">
             <legend data-i18n="regularSpendLabel">What do you regularly spend money on? Select all that apply.</legend>
             <div id="regularSpendCategories" class="choice-grid"></div>
           </fieldset>
+          <label class="field other-field" id="regularSpendOtherField">
+            <span data-i18n="otherSpecifyLabel">Please specify</span>
+            <input id="regularSpendOther" name="regular_spend_other">
+          </label>
 
           <label class="field">
             <span data-i18n="incentiveLabel">Which gift or incentive would be most useful to you?</span>
             <select id="preferredIncentive" name="preferred_incentive" required></select>
+          </label>
+          <label class="field other-field" data-other-for="preferredIncentive">
+            <span data-i18n="otherSpecifyLabel">Please specify</span>
+            <input id="preferredIncentiveOther" name="preferred_incentive_other">
           </label>
 
           <label class="field">
             <span data-i18n="messagingLabel">Which messaging platform do you use the most?</span>
             <select id="messagingPlatform" name="messaging_platform" required></select>
           </label>
+          <label class="field other-field" data-other-for="messagingPlatform">
+            <span data-i18n="otherSpecifyLabel">Please specify</span>
+            <input id="messagingPlatformOther" name="messaging_platform_other">
+          </label>
 
-          <label class="field">
-            <span data-i18n="feedbackLabel">Do you face any problem with your mobile network or recharge?</span>
-            <textarea id="workerFeedback" name="worker_feedback_raw" rows="4"></textarea>
+          <fieldset class="field check-field">
+            <legend data-i18n="rechargeLabel">Where would your top choice be to recharge your mobile? Select all that apply.</legend>
+            <div id="rechargeChannels" class="choice-grid"></div>
+          </fieldset>
+
+          <label class="field other-field" id="rechargeChannelOtherField">
+            <span data-i18n="otherSpecifyLabel">Please specify</span>
+            <input id="rechargeChannelOther" name="recharge_channel_other">
           </label>
 
           <div id="statusMessage" class="status" role="status" aria-live="polite"></div>
