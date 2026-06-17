@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Worker Mobile Survey</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="survey-panel" aria-labelledby="surveyTitle">
+        <div class="topbar">
+          <div>
+            <p class="eyebrow" data-i18n="eyebrow">Worker mobile survey</p>
+            <h1 id="surveyTitle" data-i18n="title">Mobile needs survey</h1>
+          </div>
+          <label class="language-picker">
+            <span data-i18n="languageLabel">Language</span>
+            <select id="languageSelect"></select>
+          </label>
+        </div>
+
+        <form id="surveyForm" novalidate>
+          <div class="section-heading">
+            <span>1</span>
+            <h2 data-i18n="sectionPersonal">Your details</h2>
+          </div>
+
+          <div class="field-grid">
+            <label class="field">
+              <span data-i18n="nameLabel">Full name</span>
+              <input id="userName" name="user_name" autocomplete="name" required>
+            </label>
+
+            <label class="field">
+              <span data-i18n="phoneLabel">Phone number</span>
+              <input id="phoneNumber" name="phone_number" type="tel" inputmode="numeric" autocomplete="tel" placeholder="9876543210" required>
+              <small id="phoneHelp" data-i18n="phoneHelp">Use a 10 digit Indian mobile number, without +91.</small>
+            </label>
+          </div>
+
+          <div class="section-heading">
+            <span>2</span>
+            <h2 data-i18n="sectionWork">Work and mobile use</h2>
+          </div>
+
+          <label class="field">
+            <span data-i18n="originLabel">Which state or country are you originally from?</span>
+            <input id="originState" name="origin_state" list="originOptions" required>
+            <datalist id="originOptions"></datalist>
+          </label>
+
+          <label class="field">
+            <span data-i18n="sectorLabel">What sector do you work in?</span>
+            <select id="workSector" name="work_sector" required></select>
+          </label>
+
+          <label class="field">
+            <span data-i18n="telcoLabel">What SIM or mobile network are you currently using?</span>
+            <select id="currentTelco" name="current_telco" required></select>
+          </label>
+
+          <label class="field">
+            <span data-i18n="payerLabel">Who pays for your mobile recharges?</span>
+            <select id="billPayer" name="bill_payer" required></select>
+          </label>
+
+          <label class="field">
+            <span data-i18n="spendLabel">How much do you spend on mobile recharges per month?</span>
+            <select id="monthlySpend" name="monthly_spend" required></select>
+          </label>
+
+          <fieldset class="field check-field">
+            <legend data-i18n="featuresLabel">What is most important when choosing a SIM card? Select up to 2.</legend>
+            <div id="importantFeatures" class="choice-grid"></div>
+            <small id="featureHelp" data-i18n="featuresHelp">Choose the two things that matter most.</small>
+          </fieldset>
+
+          <label class="field">
+            <span data-i18n="sourceLabel">How do you find out about new offers, SIM deals, or updates?</span>
+            <select id="marketingSource" name="marketing_source" required></select>
+          </label>
+
+          <label class="field">
+            <span data-i18n="expenseLabel">Besides food and housing, what do you spend the most money on?</span>
+            <select id="topExpense" name="top_expense" required></select>
+          </label>
+
+          <label class="field">
+            <span data-i18n="feedbackLabel">Do you face any problem with your mobile network or recharge?</span>
+            <textarea id="workerFeedback" name="worker_feedback_raw" rows="4"></textarea>
+          </label>
+
+          <div id="statusMessage" class="status" role="status" aria-live="polite"></div>
+
+          <button class="submit-button" type="submit">
+            <span data-i18n="submit">Submit survey</span>
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
