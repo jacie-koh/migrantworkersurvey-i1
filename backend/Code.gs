@@ -16,12 +16,20 @@ const HEADERS = [
   "Bill Payer English",
   "Monthly Spend Key",
   "Monthly Spend English",
-  "Important Features Keys",
-  "Important Features English",
+  "SIM Priority Ranking Keys",
+  "SIM Priority Ranking English",
   "Marketing Source Key",
   "Marketing Source English",
   "Top Expense Key",
   "Top Expense English",
+  "Rest Day Place Key",
+  "Rest Day Place English",
+  "Regular Spend Category Keys",
+  "Regular Spend Categories English",
+  "Preferred Incentive Key",
+  "Preferred Incentive English",
+  "Messaging Platform Key",
+  "Messaging Platform English",
   "Feedback Original",
   "Feedback English",
   "Raw JSON"
@@ -70,12 +78,20 @@ function doPost(event) {
       payload.bill_payer_en || "",
       payload.monthly_spend || "",
       payload.monthly_spend_en || "",
-      join_(payload.important_features),
-      join_(payload.important_features_en),
+      rankingKeys_(payload.important_features_ranked),
+      join_(payload.important_features_ranked_en),
       payload.marketing_source || "",
       payload.marketing_source_en || "",
       payload.top_expense || "",
       payload.top_expense_en || "",
+      payload.rest_day_place || "",
+      payload.rest_day_place_en || "",
+      join_(payload.regular_spend_categories),
+      join_(payload.regular_spend_categories_en),
+      payload.preferred_incentive || "",
+      payload.preferred_incentive_en || "",
+      payload.messaging_platform || "",
+      payload.messaging_platform_en || "",
       payload.worker_feedback_raw || "",
       feedbackEnglish,
       JSON.stringify(payload)
@@ -98,6 +114,9 @@ function getSheet_() {
 
   if (sheet.getLastRow() === 0) {
     sheet.appendRow(HEADERS);
+    sheet.setFrozenRows(1);
+  } else {
+    sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
     sheet.setFrozenRows(1);
   }
 
@@ -218,6 +237,18 @@ function translateWithIndicTrans2_(text, language, properties) {
 
 function join_(value) {
   return Array.isArray(value) ? value.join(", ") : (value || "");
+}
+
+function rankingKeys_(ranking) {
+  if (!ranking) return "";
+  return Object.keys(ranking)
+    .sort(function(a, b) {
+      return Number(ranking[a]) - Number(ranking[b]);
+    })
+    .map(function(feature) {
+      return ranking[feature] + ". " + feature;
+    })
+    .join(", ");
 }
 
 function json_(payload) {

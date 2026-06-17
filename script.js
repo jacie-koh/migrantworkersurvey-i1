@@ -15,90 +15,134 @@ const languages = [
   { code: "th", name: "ไทย" },
   { code: "my", name: "မြန်မာ" },
   { code: "ms", name: "Bahasa Melayu" },
-  { code: "tl", name: "Filipino" }
+  { code: "tl", name: "Filipino" },
+  { code: "zh", name: "中文" }
 ];
 
 const translations = {
   en: {
-    eyebrow: "Worker mobile survey",
-    title: "Mobile needs survey",
+    eyebrow: "Circles.Life",
+    title: "TELECOMMUNICATIONS SURVEY",
     languageLabel: "Language",
     sectionPersonal: "Your details",
     nameLabel: "Full name",
     phoneLabel: "Phone number",
-    phoneHelp: "Use a 10 digit Indian mobile number, without +91.",
+    phoneHelp: "",
     sectionWork: "Work and mobile use",
     originLabel: "Which state or country are you originally from?",
     sectorLabel: "What sector do you work in?",
     telcoLabel: "What SIM or mobile network are you currently using?",
     payerLabel: "Who pays for your mobile recharges?",
     spendLabel: "How much do you spend on mobile recharges per month?",
-    featuresLabel: "What is most important when choosing a SIM card? Select up to 2.",
-    featuresHelp: "Choose the two things that matter most.",
+    featuresLabel: "Rank what is most important when choosing a SIM card.",
+    featuresHelp: "Use each rank once. 1 is most important.",
     sourceLabel: "How do you find out about new offers, SIM deals, or updates?",
     expenseLabel: "Besides food and housing, what do you spend the most money on?",
+    placesLabel: "Where do you usually go on rest days?",
+    regularSpendLabel: "What do you regularly spend money on? Select all that apply.",
+    incentiveLabel: "Which gift or incentive would be most useful to you?",
+    messagingLabel: "Which messaging platform do you use the most?",
     feedbackLabel: "Do you face any problem with your mobile network or recharge?",
     submit: "Submit survey",
     requiredError: "Please answer all required questions.",
-    phoneError: "Please enter a valid 10 digit mobile number.",
-    featureError: "Please choose one or two important things.",
+    phoneError: "Please enter a valid phone number.",
+    featureError: "Please rank each SIM card priority once.",
     localSaved: "Saved on this device. Add your Google Apps Script URL to send responses to Sheets.",
     success: "Thank you. Your response has been submitted.",
     submitError: "Could not submit right now. Please try again."
   },
   hi: {
-    eyebrow: "श्रमिक मोबाइल सर्वे",
-    title: "मोबाइल जरूरत सर्वे",
+    eyebrow: "Circles.Life",
+    title: "दूरसंचार सर्वे",
     languageLabel: "भाषा",
     sectionPersonal: "आपकी जानकारी",
     nameLabel: "पूरा नाम",
     phoneLabel: "फोन नंबर",
-    phoneHelp: "+91 के बिना 10 अंकों का मोबाइल नंबर लिखें।",
+    phoneHelp: "",
     sectionWork: "काम और मोबाइल उपयोग",
     originLabel: "आप मूल रूप से किस राज्य या देश से हैं?",
     sectorLabel: "आप किस क्षेत्र में काम करते हैं?",
     telcoLabel: "आप अभी कौन सा सिम या मोबाइल नेटवर्क इस्तेमाल करते हैं?",
     payerLabel: "आपका मोबाइल रिचार्ज कौन करवाता है?",
     spendLabel: "आप हर महीने मोबाइल रिचार्ज पर कितना खर्च करते हैं?",
-    featuresLabel: "सिम चुनते समय आपके लिए सबसे जरूरी क्या है? अधिकतम 2 चुनें।",
-    featuresHelp: "सबसे जरूरी दो चीजें चुनें।",
+    featuresLabel: "सिम कार्ड चुनते समय इन बातों को क्रम में रखें।",
+    featuresHelp: "हर रैंक एक बार इस्तेमाल करें। 1 सबसे जरूरी है।",
     sourceLabel: "नए ऑफर या सिम डील के बारे में आपको कहाँ से पता चलता है?",
     expenseLabel: "खाने और रहने के अलावा आप सबसे ज्यादा पैसा किस पर खर्च करते हैं?",
+    placesLabel: "छुट्टी के दिन आप आमतौर पर कहाँ जाते हैं?",
+    regularSpendLabel: "आप किन चीजों पर नियमित रूप से पैसा खर्च करते हैं? जो लागू हों चुनें।",
+    incentiveLabel: "कौन सा गिफ्ट या इनाम आपके लिए सबसे उपयोगी होगा?",
+    messagingLabel: "आप सबसे ज्यादा कौन सा मैसेजिंग ऐप इस्तेमाल करते हैं?",
     feedbackLabel: "क्या मोबाइल नेटवर्क या रिचार्ज में कोई समस्या आती है?",
     submit: "सर्वे जमा करें",
     requiredError: "कृपया सभी जरूरी सवालों के जवाब दें।",
-    phoneError: "कृपया सही 10 अंकों का मोबाइल नंबर लिखें।",
-    featureError: "कृपया एक या दो जरूरी चीजें चुनें।",
+    phoneError: "कृपया सही फोन नंबर लिखें।",
+    featureError: "कृपया हर प्राथमिकता को एक बार रैंक करें।",
     localSaved: "इस डिवाइस पर सेव हो गया। Sheets में भेजने के लिए Google Apps Script URL जोड़ें।",
     success: "धन्यवाद। आपका जवाब जमा हो गया।",
     submitError: "अभी जमा नहीं हो पाया। कृपया फिर कोशिश करें।"
   },
   bn: {
-    eyebrow: "শ্রমিক মোবাইল জরিপ",
-    title: "মোবাইল প্রয়োজন জরিপ",
+    eyebrow: "Circles.Life",
+    title: "টেলিকমিউনিকেশন জরিপ",
     languageLabel: "ভাষা",
     sectionPersonal: "আপনার তথ্য",
     nameLabel: "পুরো নাম",
     phoneLabel: "ফোন নম্বর",
-    phoneHelp: "+91 ছাড়া ১০ সংখ্যার মোবাইল নম্বর দিন।",
+    phoneHelp: "",
     sectionWork: "কাজ ও মোবাইল ব্যবহার",
     originLabel: "আপনি মূলত কোন রাজ্য বা দেশ থেকে এসেছেন?",
     sectorLabel: "আপনি কোন ক্ষেত্রে কাজ করেন?",
     telcoLabel: "আপনি এখন কোন সিম বা মোবাইল নেটওয়ার্ক ব্যবহার করছেন?",
     payerLabel: "আপনার মোবাইল রিচার্জ কে করে?",
     spendLabel: "আপনি প্রতি মাসে মোবাইল রিচার্জে কত খরচ করেন?",
-    featuresLabel: "সিম বেছে নেওয়ার সময় আপনার কাছে সবচেয়ে জরুরি কী? সর্বোচ্চ ২টি বাছুন।",
-    featuresHelp: "সবচেয়ে জরুরি দুটি বিষয় বেছে নিন।",
+    featuresLabel: "সিম কার্ড বেছে নেওয়ার সময় বিষয়গুলো ক্রম অনুযায়ী সাজান।",
+    featuresHelp: "প্রতিটি র‍্যাঙ্ক একবার ব্যবহার করুন। ১ সবচেয়ে জরুরি।",
     sourceLabel: "নতুন অফার বা সিম ডিল সম্পর্কে কোথা থেকে জানতে পারেন?",
     expenseLabel: "খাবার ও থাকার বাইরে সবচেয়ে বেশি টাকা কিসে খরচ করেন?",
+    placesLabel: "ছুটির দিনে সাধারণত কোথায় যান?",
+    regularSpendLabel: "আপনি নিয়মিত কোন জিনিসে টাকা খরচ করেন? সব প্রযোজ্য বেছে নিন।",
+    incentiveLabel: "কোন উপহার বা ইনসেনটিভ আপনার কাছে সবচেয়ে কাজে লাগবে?",
+    messagingLabel: "আপনি সবচেয়ে বেশি কোন মেসেজিং প্ল্যাটফর্ম ব্যবহার করেন?",
     feedbackLabel: "মোবাইল নেটওয়ার্ক বা রিচার্জ নিয়ে কোনো সমস্যা হয় কি?",
     submit: "জরিপ জমা দিন",
     requiredError: "অনুগ্রহ করে সব জরুরি প্রশ্নের উত্তর দিন।",
-    phoneError: "সঠিক ১০ সংখ্যার মোবাইল নম্বর দিন।",
-    featureError: "একটি বা দুটি জরুরি বিষয় বেছে নিন।",
+    phoneError: "সঠিক ফোন নম্বর দিন।",
+    featureError: "প্রতিটি অগ্রাধিকার একবার করে র‍্যাঙ্ক করুন।",
     localSaved: "এই ডিভাইসে সেভ হয়েছে। Sheets-এ পাঠাতে Google Apps Script URL যোগ করুন।",
     success: "ধন্যবাদ। আপনার উত্তর জমা হয়েছে।",
     submitError: "এখন জমা দেওয়া গেল না। আবার চেষ্টা করুন।"
+  },
+  zh: {
+    eyebrow: "Circles.Life",
+    title: "电信服务问卷",
+    languageLabel: "语言",
+    sectionPersonal: "您的资料",
+    nameLabel: "姓名",
+    phoneLabel: "电话号码",
+    phoneHelp: "",
+    sectionWork: "工作与手机使用",
+    originLabel: "您原本来自哪个州或国家？",
+    sectorLabel: "您从事哪个行业？",
+    telcoLabel: "您现在使用哪个 SIM 卡或手机网络？",
+    payerLabel: "谁支付您的手机充值或账单？",
+    spendLabel: "您每月在手机充值或套餐上花多少钱？",
+    featuresLabel: "请选择 SIM 卡时最重要因素的排序。",
+    featuresHelp: "每个排名只能使用一次。1 表示最重要。",
+    sourceLabel: "您从哪里得知新的优惠、SIM 卡配套或更新？",
+    expenseLabel: "除了食物和住宿，您花最多钱在哪方面？",
+    placesLabel: "休息日您通常去哪里？",
+    regularSpendLabel: "您经常在哪些方面花钱？请选择所有适用项。",
+    incentiveLabel: "哪种礼品或奖励对您最有用？",
+    messagingLabel: "您最常使用哪个聊天平台？",
+    feedbackLabel: "您的手机网络或充值是否遇到任何问题？",
+    submit: "提交问卷",
+    requiredError: "请回答所有必填问题。",
+    phoneError: "请输入有效的电话号码。",
+    featureError: "请为每个 SIM 卡因素选择唯一排名。",
+    localSaved: "已保存在此设备上。请添加 Google Apps Script URL 以发送到 Sheets。",
+    success: "谢谢。您的回复已提交。",
+    submitError: "现在无法提交。请稍后再试。"
   }
 };
 
@@ -372,14 +416,22 @@ const optionSets = {
     ["other", "Other"]
   ],
   currentTelco: [
-    ["jio", "Jio"],
-    ["airtel", "Airtel"],
-    ["vi", "Vi"],
-    ["bsnl", "BSNL"],
     ["singtel", "Singtel"],
     ["starhub", "StarHub"],
     ["m1", "M1"],
     ["simba", "SIMBA"],
+    ["giga", "Giga"],
+    ["gomo", "GOMO"],
+    ["circles_life", "Circles.Life"],
+    ["zero1", "Zero1"],
+    ["vivifi", "VIVIFI"],
+    ["redone", "redONE"],
+    ["eight", "eight"],
+    ["heya", "heya"],
+    ["changi_mobile", "Changi Mobile"],
+    ["zym_mobile", "ZYM Mobile"],
+    ["myrepublic", "MyRepublic"],
+    ["cmlink", "CMLink"],
     ["other", "Other"]
   ],
   billPayer: [
@@ -390,10 +442,11 @@ const optionSets = {
     ["other", "Other"]
   ],
   monthlySpend: [
-    ["under_200_inr", "Under ₹200 / under S$5"],
-    ["200_399_inr", "₹200-399 / S$5-9"],
-    ["400_699_inr", "₹400-699 / S$10-15"],
-    ["700_plus_inr", "₹700+ / S$16+"],
+    ["under_10_sgd", "Under S$10"],
+    ["10_19_sgd", "S$10-19"],
+    ["20_29_sgd", "S$20-29"],
+    ["30_49_sgd", "S$30-49"],
+    ["50_plus_sgd", "S$50+"],
     ["not_sure", "Not sure"]
   ],
   importantFeatures: [
@@ -401,8 +454,7 @@ const optionSets = {
     ["calling_home", "Calling family at home"],
     ["high_data", "More internet data"],
     ["good_network", "Good network coverage"],
-    ["easy_recharge", "Easy recharge"],
-    ["language_support", "Help in my language"]
+    ["easy_recharge", "Easy recharge"]
   ],
   marketingSource: [
     ["friends_coworkers", "Friends or coworkers"],
@@ -420,6 +472,50 @@ const optionSets = {
     ["health_medicine", "Health or medicine"],
     ["entertainment", "Entertainment"],
     ["debt_loan", "Debt or loan payment"],
+    ["other", "Other"]
+  ],
+  restDayPlace: [
+    ["dormitory", "Dormitory / room"],
+    ["little_india", "Little India"],
+    ["geylang", "Geylang"],
+    ["mustafa", "Mustafa Centre"],
+    ["parks_beaches", "Parks or beaches"],
+    ["malls", "Shopping malls"],
+    ["religious_place", "Temple / mosque / church"],
+    ["friends_place", "Friends' place"],
+    ["sports_facility", "Sports facility"],
+    ["other", "Other"]
+  ],
+  regularSpendCategories: [
+    ["food", "Food"],
+    ["transport", "Transport"],
+    ["mobile_bills", "Mobile bills"],
+    ["other_bills", "Other bills"],
+    ["remittance", "Sending money home"],
+    ["health_medicine", "Health or medicine"],
+    ["entertainment", "Entertainment"],
+    ["shopping", "Shopping"],
+    ["debt_loan", "Debt or loan payment"]
+  ],
+  preferredIncentive: [
+    ["mobile_data", "Extra mobile data"],
+    ["recharge_discount", "Recharge discount"],
+    ["cash_voucher", "Cash voucher"],
+    ["grocery_voucher", "Grocery voucher"],
+    ["remittance_discount", "Remittance discount"],
+    ["free_calls", "Free overseas calls"],
+    ["lucky_draw", "Lucky draw prize"],
+    ["other", "Other"]
+  ],
+  messagingPlatform: [
+    ["whatsapp", "WhatsApp"],
+    ["facebook_messenger", "Facebook Messenger"],
+    ["telegram", "Telegram"],
+    ["wechat", "WeChat"],
+    ["imo", "imo"],
+    ["viber", "Viber"],
+    ["line", "LINE"],
+    ["regular_sms", "SMS"],
     ["other", "Other"]
   ]
 };
@@ -632,6 +728,72 @@ const localizedOptions = {
     health_medicine: "Kesehatan atau obat",
     entertainment: "Hiburan",
     debt_loan: "Pembayaran utang atau pinjaman"
+  },
+  zh: {
+    construction: "建筑",
+    factory: "工厂 / 制造业",
+    textile_garments: "纺织 / 服装",
+    marine_shipyard: "海事 / 船厂",
+    agriculture: "农业",
+    domestic_work: "家政工作",
+    cleaning: "清洁 / 设施服务",
+    delivery_transport: "配送 / 运输",
+    other: "其他",
+    myself: "自己",
+    employer: "雇主",
+    family: "家人",
+    friend_agent: "朋友或中介",
+    under_10_sgd: "低于 S$10",
+    "10_19_sgd": "S$10-19",
+    "20_29_sgd": "S$20-29",
+    "30_49_sgd": "S$30-49",
+    "50_plus_sgd": "S$50 以上",
+    not_sure: "不确定",
+    low_price: "价格低",
+    calling_home: "给家人打电话",
+    high_data: "更多上网流量",
+    good_network: "网络覆盖好",
+    easy_recharge: "充值方便",
+    friends_coworkers: "朋友或同事",
+    mobile_shop: "手机店",
+    whatsapp: "WhatsApp",
+    facebook_social: "Facebook 或社交媒体",
+    employer_agent: "雇主或中介",
+    street_poster: "海报或传单",
+    send_money_home: "汇钱回家",
+    transport: "交通",
+    mobile_recharge: "手机充值",
+    health_medicine: "医疗或药品",
+    entertainment: "娱乐",
+    debt_loan: "还债或贷款",
+    dormitory: "宿舍 / 房间",
+    little_india: "小印度",
+    geylang: "芽笼",
+    mustafa: "慕达发中心",
+    parks_beaches: "公园或海滩",
+    malls: "购物中心",
+    religious_place: "寺庙 / 清真寺 / 教堂",
+    friends_place: "朋友住处",
+    sports_facility: "运动设施",
+    food: "食物",
+    mobile_bills: "手机账单",
+    other_bills: "其他账单",
+    remittance: "汇款回家",
+    shopping: "购物",
+    mobile_data: "额外手机流量",
+    recharge_discount: "充值折扣",
+    cash_voucher: "现金券",
+    grocery_voucher: "超市券",
+    remittance_discount: "汇款折扣",
+    free_calls: "免费海外通话",
+    lucky_draw: "幸运抽奖奖品",
+    facebook_messenger: "Facebook Messenger",
+    telegram: "Telegram",
+    wechat: "微信",
+    imo: "imo",
+    viber: "Viber",
+    line: "LINE",
+    regular_sms: "短信"
   }
 };
 
@@ -686,13 +848,35 @@ function renderOptions(selectId, options) {
   if (previous) select.value = previous;
 }
 
-function renderCheckboxes() {
+function renderFeatureRankings() {
   const container = $("#importantFeatures");
-  const selected = getSelectedFeatures();
+  const current = getFeatureRanking();
+  const rankOptions = ["", "1", "2", "3", "4", "5"]
+    .map((rank) => `<option value="${rank}">${rank || "-"}</option>`)
+    .join("");
   container.innerHTML = optionSets.importantFeatures
     .map(([value, label]) => `
+      <label class="rank-row">
+        <span>${displayOption(value, label)}</span>
+        <select name="feature_rank_${value}" data-feature="${value}" aria-label="${displayOption(value, label)} rank">
+          ${rankOptions}
+        </select>
+      </label>
+    `)
+    .join("");
+  Object.entries(current).forEach(([feature, rank]) => {
+    const select = container.querySelector(`[data-feature="${feature}"]`);
+    if (select) select.value = rank;
+  });
+}
+
+function renderCheckboxGroup(containerId, inputName, options) {
+  const container = $(`#${containerId}`);
+  const selected = getCheckedValues(inputName);
+  container.innerHTML = options
+    .map(([value, label]) => `
       <label class="choice">
-        <input type="checkbox" name="important_features" value="${value}" ${selected.indexOf(value) !== -1 ? "checked" : ""}>
+        <input type="checkbox" name="${inputName}" value="${value}" ${selected.indexOf(value) !== -1 ? "checked" : ""}>
         <span>${displayOption(value, label)}</span>
       </label>
     `)
@@ -710,7 +894,11 @@ function translatePage() {
   renderOptions("monthlySpend", optionSets.monthlySpend);
   renderOptions("marketingSource", optionSets.marketingSource);
   renderOptions("topExpense", optionSets.topExpense);
-  renderCheckboxes();
+  renderOptions("restDayPlace", optionSets.restDayPlace);
+  renderOptions("preferredIncentive", optionSets.preferredIncentive);
+  renderOptions("messagingPlatform", optionSets.messagingPlatform);
+  renderFeatureRankings();
+  renderCheckboxGroup("regularSpendCategories", "regular_spend_categories", optionSets.regularSpendCategories);
 }
 
 function renderStaticData() {
@@ -721,7 +909,11 @@ function renderStaticData() {
   renderOptions("monthlySpend", optionSets.monthlySpend);
   renderOptions("marketingSource", optionSets.marketingSource);
   renderOptions("topExpense", optionSets.topExpense);
-  renderCheckboxes();
+  renderOptions("restDayPlace", optionSets.restDayPlace);
+  renderOptions("preferredIncentive", optionSets.preferredIncentive);
+  renderOptions("messagingPlatform", optionSets.messagingPlatform);
+  renderFeatureRankings();
+  renderCheckboxGroup("regularSpendCategories", "regular_spend_categories", optionSets.regularSpendCategories);
   $("#originOptions").innerHTML = originSuggestions.map((item) => `<option value="${item}"></option>`).join("");
   translatePage();
 }
@@ -733,11 +925,30 @@ function setStatus(message, type) {
 }
 
 function validatePhone(phone) {
-  return /^[6-9]\d{9}$/.test(phone.replace(/\D/g, ""));
+  return /^\d{8,15}$/.test(phone.replace(/\D/g, ""));
 }
 
-function getSelectedFeatures() {
-  return [...document.querySelectorAll("input[name='important_features']:checked")].map((input) => input.value);
+function getCheckedValues(inputName) {
+  return [...document.querySelectorAll(`input[name='${inputName}']:checked`)].map((input) => input.value);
+}
+
+function getFeatureRanking() {
+  const ranking = {};
+  document.querySelectorAll("#importantFeatures select[data-feature]").forEach((select) => {
+    if (select.value) ranking[select.dataset.feature] = select.value;
+  });
+  return ranking;
+}
+
+function isCompleteRanking(ranking) {
+  const ranks = Object.values(ranking);
+  return ranks.length === optionSets.importantFeatures.length && new Set(ranks).size === ranks.length;
+}
+
+function formatFeatureRanking(ranking) {
+  return Object.entries(ranking)
+    .sort((a, b) => Number(a[1]) - Number(b[1]))
+    .map(([feature, rank]) => `${rank}. ${optionLabel("importantFeatures", feature)}`);
 }
 
 function optionLabel(setName, value) {
@@ -746,13 +957,17 @@ function optionLabel(setName, value) {
 }
 
 function buildPayload() {
-  const selectedFeatures = getSelectedFeatures();
+  const featureRanking = getFeatureRanking();
   const workSector = $("#workSector").value;
   const currentTelco = $("#currentTelco").value;
   const billPayer = $("#billPayer").value;
   const monthlySpend = $("#monthlySpend").value;
   const marketingSource = $("#marketingSource").value;
   const topExpense = $("#topExpense").value;
+  const restDayPlace = $("#restDayPlace").value;
+  const preferredIncentive = $("#preferredIncentive").value;
+  const messagingPlatform = $("#messagingPlatform").value;
+  const regularSpendCategories = getCheckedValues("regular_spend_categories");
 
   return {
     submitted_at: new Date().toISOString(),
@@ -768,12 +983,20 @@ function buildPayload() {
     bill_payer_en: optionLabel("billPayer", billPayer),
     monthly_spend: monthlySpend,
     monthly_spend_en: optionLabel("monthlySpend", monthlySpend),
-    important_features: selectedFeatures,
-    important_features_en: selectedFeatures.map((feature) => optionLabel("importantFeatures", feature)),
+    important_features_ranked: featureRanking,
+    important_features_ranked_en: formatFeatureRanking(featureRanking),
     marketing_source: marketingSource,
     marketing_source_en: optionLabel("marketingSource", marketingSource),
     top_expense: topExpense,
     top_expense_en: optionLabel("topExpense", topExpense),
+    rest_day_place: restDayPlace,
+    rest_day_place_en: optionLabel("restDayPlace", restDayPlace),
+    regular_spend_categories: regularSpendCategories,
+    regular_spend_categories_en: regularSpendCategories.map((item) => optionLabel("regularSpendCategories", item)),
+    preferred_incentive: preferredIncentive,
+    preferred_incentive_en: optionLabel("preferredIncentive", preferredIncentive),
+    messaging_platform: messagingPlatform,
+    messaging_platform_en: optionLabel("messagingPlatform", messagingPlatform),
     worker_feedback_raw: $("#workerFeedback").value.trim()
   };
 }
@@ -807,16 +1030,11 @@ function bindEvents() {
     translatePage();
   });
 
-  $("#importantFeatures").addEventListener("change", () => {
-    const checked = [...document.querySelectorAll("input[name='important_features']:checked")];
-    if (checked.length > 2) checked[checked.length - 1].checked = false;
-  });
-
   $("#surveyForm").addEventListener("submit", async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
     const payload = buildPayload();
-    const selectedFeatures = getSelectedFeatures();
+    const featureRanking = getFeatureRanking();
 
     if (!form.checkValidity()) {
       setStatus(t("requiredError"), "error");
@@ -829,7 +1047,7 @@ function bindEvents() {
       return;
     }
 
-    if (selectedFeatures.length < 1 || selectedFeatures.length > 2) {
+    if (!isCompleteRanking(featureRanking)) {
       setStatus(t("featureError"), "error");
       return;
     }

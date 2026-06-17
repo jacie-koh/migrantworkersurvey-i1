@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Worker Mobile Survey</title>
+    <title>Circles.Life Telecommunications Survey</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -11,8 +11,8 @@
       <section class="survey-panel" aria-labelledby="surveyTitle">
         <div class="topbar">
           <div>
-            <p class="eyebrow" data-i18n="eyebrow">Worker mobile survey</p>
-            <h1 id="surveyTitle" data-i18n="title">Mobile needs survey</h1>
+            <p class="eyebrow" data-i18n="eyebrow">Circles.Life</p>
+            <h1 id="surveyTitle" data-i18n="title">Telecommunications survey</h1>
           </div>
           <label class="language-picker">
             <span data-i18n="languageLabel">Language</span>
@@ -35,7 +35,6 @@
             <label class="field">
               <span data-i18n="phoneLabel">Phone number</span>
               <input id="phoneNumber" name="phone_number" type="tel" inputmode="numeric" autocomplete="tel" placeholder="9876543210" required>
-              <small id="phoneHelp" data-i18n="phoneHelp">Use a 10 digit Indian mobile number, without +91.</small>
             </label>
           </div>
 
@@ -70,10 +69,10 @@
             <select id="monthlySpend" name="monthly_spend" required></select>
           </label>
 
-          <fieldset class="field check-field">
-            <legend data-i18n="featuresLabel">What is most important when choosing a SIM card? Select up to 2.</legend>
-            <div id="importantFeatures" class="choice-grid"></div>
-            <small id="featureHelp" data-i18n="featuresHelp">Choose the two things that matter most.</small>
+          <fieldset class="field rank-field">
+            <legend data-i18n="featuresLabel">Rank what is most important when choosing a SIM card.</legend>
+            <div id="importantFeatures" class="rank-list"></div>
+            <small id="featureHelp" data-i18n="featuresHelp">Use each rank once. 1 is most important.</small>
           </fieldset>
 
           <label class="field">
@@ -84,6 +83,26 @@
           <label class="field">
             <span data-i18n="expenseLabel">Besides food and housing, what do you spend the most money on?</span>
             <select id="topExpense" name="top_expense" required></select>
+          </label>
+
+          <label class="field">
+            <span data-i18n="placesLabel">Where do you usually go on rest days?</span>
+            <select id="restDayPlace" name="rest_day_place" required></select>
+          </label>
+
+          <fieldset class="field check-field">
+            <legend data-i18n="regularSpendLabel">What do you regularly spend money on? Select all that apply.</legend>
+            <div id="regularSpendCategories" class="choice-grid"></div>
+          </fieldset>
+
+          <label class="field">
+            <span data-i18n="incentiveLabel">Which gift or incentive would be most useful to you?</span>
+            <select id="preferredIncentive" name="preferred_incentive" required></select>
+          </label>
+
+          <label class="field">
+            <span data-i18n="messagingLabel">Which messaging platform do you use the most?</span>
+            <select id="messagingPlatform" name="messaging_platform" required></select>
           </label>
 
           <label class="field">

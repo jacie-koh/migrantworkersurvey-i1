@@ -162,6 +162,30 @@ fieldset {
   gap: 10px;
 }
 
+.rank-list {
+  display: grid;
+  gap: 10px;
+}
+
+.rank-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 110px;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.rank-row span {
+  font-weight: 700;
+}
+
+.rank-row select {
+  min-height: 38px;
+}
+
 .choice {
   display: flex;
   align-items: center;
@@ -231,7 +255,8 @@ fieldset {
 
   .topbar,
   .field-grid,
-  .choice-grid {
+  .choice-grid,
+  .rank-row {
     grid-template-columns: 1fr;
   }
 
