@@ -1128,6 +1128,8 @@ function translatePage() {
   document.querySelectorAll("[data-i18n]").forEach((node) => {
     node.textContent = t(node.dataset.i18n);
   });
+  const eyebrow = document.querySelector('.eyebrow');
+  if (eyebrow) eyebrow.textContent = 'Circles.Life';
   renderOptions("workSector", optionSets.workSector);
   renderOptions("currentTelco", optionSets.currentTelco);
   renderOptions("billPayer", optionSets.billPayer);
