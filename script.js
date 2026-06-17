@@ -1224,7 +1224,11 @@ function renderLanguageSelect() {
 }
 
 function displayOption(value, englishLabel) {
-  return (localizedOptions[state.language] && localizedOptions[state.language][value]) || englishLabel;
+  return (
+    (localizedOptions[state.language] && localizedOptions[state.language][value]) ||
+    (translations[state.language] && translations[state.language][value]) ||
+    englishLabel
+  );
 }
 
 function renderOptions(selectId, options) {
