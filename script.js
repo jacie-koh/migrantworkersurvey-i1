@@ -1,4 +1,4 @@
-const GOOGLE_SCRIPT_URL = "";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx9HeF4M5XKhViMwtyJd6QvRv26KXhbJXWT728QFGui8tCne1039MCgyWEEw_tM6WpB/exec";
 
 const languages = [
   { code: "en", name: "English" },
