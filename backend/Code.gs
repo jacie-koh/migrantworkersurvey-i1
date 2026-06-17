@@ -53,7 +53,7 @@ const HEADERS = [
   "Raw JSON"
 ];
 
-const SEA_LION_LANGUAGES = ["ta", "id", "vi", "th", "my", "ms", "tl", "km", "lo"];
+const SEA_LION_LANGUAGES = ["ta", "id", "vi", "th", "my", "ms", "tl", "km", "lo", "zh"];
 const INDIC_LANGUAGES = ["hi", "bn", "te", "mr", "or", "bho", "ml"];
 const INDIC_TRANS2_CODES = {
   as: "asm_Beng",
