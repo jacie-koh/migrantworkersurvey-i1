@@ -68,6 +68,17 @@ def health():
     return {"ok": True, "model": MODEL_NAME, "device": DEVICE}
 
 
+@app.get("/")
+def root():
+    return {
+        "ok": True,
+        "service": "IndicTrans2 Translation API",
+        "translate_endpoint": "/translate",
+        "model": MODEL_NAME,
+        "device": DEVICE,
+    }
+
+
 @app.post("/translate", response_model=TranslateResponse)
 def translate(request: TranslateRequest, _: None = Depends(require_bearer)):
     text = request.text.strip()
