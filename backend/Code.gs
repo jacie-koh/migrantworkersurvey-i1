@@ -29,6 +29,21 @@ const HEADERS = [
 
 const SEA_LION_LANGUAGES = ["ta", "id", "vi", "th", "my", "ms", "tl", "km", "lo"];
 const INDIC_LANGUAGES = ["hi", "bn", "te", "mr", "or", "bho", "ml"];
+const INDIC_TRANS2_CODES = {
+  as: "asm_Beng",
+  bn: "ben_Beng",
+  gu: "guj_Gujr",
+  hi: "hin_Deva",
+  kn: "kan_Knda",
+  ml: "mal_Mlym",
+  mr: "mar_Deva",
+  or: "ory_Orya",
+  pa: "pan_Guru",
+  ta: "tam_Taml",
+  te: "tel_Telu",
+  ur: "urd_Arab",
+  bho: "bho_Deva"
+};
 
 function doPost(event) {
   try {
@@ -91,7 +106,7 @@ function getSheet_() {
 
 function providerForLanguage_(language) {
   if (SEA_LION_LANGUAGES.indexOf(language) !== -1) return "cloudflare-sealion-or-languageapp";
-  if (INDIC_LANGUAGES.indexOf(language) !== -1) return "indic-or-languageapp";
+  if (INDIC_LANGUAGES.indexOf(language) !== -1) return "indictrans2-or-languageapp";
   return "languageapp";
 }
 
@@ -117,31 +132,7 @@ function translateWithExternalProvider_(text, language, provider) {
     return translateWithCloudflareSeaLion_(text, language, properties);
   }
 
-  const endpoint = properties.getProperty("INDIC_TRANSLATE_URL");
-  const apiKey = properties.getProperty("INDIC_API_KEY");
-
-  if (!endpoint) return "";
-
-  try {
-    const response = UrlFetchApp.fetch(endpoint, {
-      method: "post",
-      contentType: "application/json",
-      headers: apiKey ? { Authorization: "Bearer " + apiKey } : {},
-      muteHttpExceptions: true,
-      payload: JSON.stringify({
-        text: text,
-        source_language: language,
-        target_language: "en"
-      })
-    });
-
-    if (response.getResponseCode() < 200 || response.getResponseCode() >= 300) return "";
-
-    const parsed = JSON.parse(response.getContentText());
-    return parsed.translation || parsed.translated_text || parsed.text || "";
-  } catch (error) {
-    return "";
-  }
+  return translateWithIndicTrans2_(text, language, properties);
 }
 
 function translateWithCloudflareSeaLion_(text, language, properties) {
@@ -192,6 +183,37 @@ function cleanModelTranslation_(text) {
     .replace(/^["']|["']$/g, "")
     .replace(/^English translation:\s*/i, "")
     .trim();
+}
+
+function translateWithIndicTrans2_(text, language, properties) {
+  const endpoint = properties.getProperty("INDIC_TRANSLATE_URL");
+  const apiKey = properties.getProperty("INDIC_API_KEY");
+  const sourceLanguage = INDIC_TRANS2_CODES[language] || language;
+
+  if (!endpoint) return "";
+
+  try {
+    const response = UrlFetchApp.fetch(endpoint, {
+      method: "post",
+      contentType: "application/json",
+      headers: apiKey ? { Authorization: "Bearer " + apiKey } : {},
+      muteHttpExceptions: true,
+      payload: JSON.stringify({
+        text: text,
+        source_language: language,
+        target_language: "en",
+        src_lang: sourceLanguage,
+        tgt_lang: "eng_Latn"
+      })
+    });
+
+    if (response.getResponseCode() < 200 || response.getResponseCode() >= 300) return "";
+
+    const parsed = JSON.parse(response.getContentText());
+    return cleanModelTranslation_(parsed.translation || parsed.translated_text || parsed.text || parsed.response || "");
+  } catch (error) {
+    return "";
+  }
 }
 
 function join_(value) {

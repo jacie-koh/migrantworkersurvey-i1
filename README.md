@@ -21,6 +21,7 @@ English, Hindi, Bengali, Tamil, Telugu, Marathi, Odia, Bhojpuri, Malayalam, Indo
 - `styles.css` - responsive survey UI
 - `script.js` - language switching, validation, payload creation, submit handling
 - `backend/Code.gs` - Google Apps Script backend for Google Sheets
+- `backend/indictrans2-api` - optional Python API wrapper for AI4Bharat IndicTrans2
 - `.github/workflows/pages.yml` - GitHub Pages deployment workflow
 
 ## Google Sheets Setup
@@ -89,26 +90,44 @@ and reads:
 { "response": "English text" }
 ```
 
-### Indic Provider
+### AI4Bharat IndicTrans2
 
-Optional Apps Script properties for Hindi, Bengali, Telugu, Marathi, Odia, Bhojpuri, and Malayalam:
+This project is wired for [ai4bharat/IndicTrans2](https://github.com/AI4Bharat/IndicTrans2) through the wrapper in `backend/indictrans2-api`.
 
-- `INDIC_TRANSLATE_URL`
-- `INDIC_API_KEY`
+IndicTrans2 is not a hosted API by itself. It is a model you run in Python, preferably on GPU. The wrapper exposes:
 
-Expected Indic endpoint response can be any of:
-
-```json
-{ "translation": "English text" }
+```text
+POST /translate
 ```
 
-```json
-{ "translated_text": "English text" }
-```
+Apps Script sends both simple app language codes and IndicTrans2 FLORES codes:
 
 ```json
-{ "text": "English text" }
+{
+  "text": "मेरा नेटवर्क ठीक नहीं चलता",
+  "source_language": "hi",
+  "target_language": "en",
+  "src_lang": "hin_Deva",
+  "tgt_lang": "eng_Latn"
+}
 ```
+
+and expects:
+
+```json
+{ "translation": "My network does not work properly." }
+```
+
+To enable it, host `backend/indictrans2-api` and set these Apps Script properties:
+
+- `INDIC_TRANSLATE_URL`: your hosted `/translate` URL
+- `INDIC_API_KEY`: optional bearer token if your wrapper uses `INDICTRANS2_API_KEY`
+
+Current language routing:
+
+- Tamil and SEA languages route to Cloudflare SEA-LION.
+- Hindi, Bengali, Telugu, Marathi, Odia, Bhojpuri, and Malayalam route to IndicTrans2.
+- Missing or failed model calls fall back to Apps Script `LanguageApp.translate`.
 
 ## GitHub Pages Deployment
 

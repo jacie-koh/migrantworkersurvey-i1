@@ -1,0 +1,11 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+torch>=2.1.0
+transformers>=4.40.0
+IndicTransToolkit>=1.0.2
+mosestokenizer>=1.2.1
+nltk>=3.8.1
+indic-nlp-library>=0.92
+sentencepiece>=0.2.0
+protobuf>=4.25.0
+
