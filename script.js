@@ -964,16 +964,39 @@ const localizedOptions = {
     health_medicine: "आरोग्य किंवा औषध",
     entertainment: "मनोरंजन",
     debt_loan: "कर्ज भरणे"
-    ,
-    convenience_store: "कन्व्हिनियन्स स्टोअर",
-    dorms: "छात्रवासन",
-    retail_shops: "खुद्रा दुकाने",
-    agent: "एजंट",
-    roadshows: "रोडशो",
-    app: "अॅप",
+  },
+  or: {
+    convenience_store: "ସୁବିଧା ଦୋକାନ",
+    dorms: "ଡର୍ମସ୍",
+    retail_shops: "ରିଟେଲ୍ ଦୋକାନ",
+    agent: "ଏଜେଣ୍ଟ",
+    roadshows: "ରୋଡଶୋ",
+    app: "ଆପ୍",
     atms_axs: "ATM / AXS",
-    self_serve: "स्वयं-सेवा",
-    in_person: "प्रत्यक्ष"
+    self_serve: "ସ୍ୱୟଂ-ସେବା",
+    in_person: "ସାକ୍ଷାତ"
+  },
+  bho: {
+    convenience_store: "कन्वीनियन्स स्टोअर",
+    dorms: "छात्रावास",
+    retail_shops: "खुदरा दुकान",
+    agent: "एजेंट",
+    roadshows: "रोडशो",
+    app: "ऐप",
+    atms_axs: "ATM / AXS",
+    self_serve: "सेल्फ-सर्व",
+    in_person: "सामने"
+  },
+  ml: {
+    convenience_store: "സൗകര്യ കട",
+    dorms: "ഡോംസ്",
+    retail_shops: "റീട്ടെയിൽ കടകൾ",
+    agent: "ഏജന്റ്",
+    roadshows: "റോഡ്‌ഷോകൾ",
+    app: "ആപ്പ്",
+    atms_axs: "ATM / AXS",
+    self_serve: "സ്വയം സേവനം",
+    in_person: "നേരിട്ട്"
   },
   id: {
     construction: "Konstruksi",
@@ -1017,6 +1040,61 @@ const localizedOptions = {
     atms_axs: "ATM / AXS",
     self_serve: "Layanan mandiri",
     in_person: "Langsung"
+  },
+  vi: {
+    convenience_store: "Cửa hàng tiện lợi",
+    dorms: "Ký túc xá",
+    retail_shops: "Cửa hàng bán lẻ",
+    agent: "Đại lý",
+    roadshows: "Roadshow",
+    app: "Ứng dụng",
+    atms_axs: "ATM / AXS",
+    self_serve: "Tự phục vụ",
+    in_person: "Trực tiếp"
+  },
+  th: {
+    convenience_store: "ร้านสะดวกซื้อ",
+    dorms: "หอพัก",
+    retail_shops: "ร้านค้าปลีก",
+    agent: "เอเจนต์",
+    roadshows: "โรดโชว์",
+    app: "แอป",
+    atms_axs: "ATM / AXS",
+    self_serve: "บริการตนเอง",
+    in_person: "พบหน้า"
+  },
+  my: {
+    convenience_store: "ဆိုင်အဆင်ပြေ",
+    dorms: "တည်းခိုခန်း",
+    retail_shops: "လက်လီဆိုင်",
+    agent: "ကိုယ်စားလှယ်",
+    roadshows: "ရုပ်ရှင်ပွဲ",
+    app: "အက်ပလီကေးရှင်း",
+    atms_axs: "ATM / AXS",
+    self_serve: "ကိုယ်ပိုင်ဝန်ဆောင်မှု",
+    in_person: "ကိုယ်တိုင်"
+  },
+  ms: {
+    convenience_store: "Kedai serbaneka",
+    dorms: "Asrama",
+    retail_shops: "Kedai runcit",
+    agent: "Ejen",
+    roadshows: "Roadshow",
+    app: "Aplikasi",
+    atms_axs: "ATM / AXS",
+    self_serve: "Layan diri",
+    in_person: "Bersemuka"
+  },
+  tl: {
+    convenience_store: "Tindahan ng kaginhawaan",
+    dorms: "Dorms",
+    retail_shops: "Tindahan",
+    agent: "Ahente",
+    roadshows: "Roadshow",
+    app: "App",
+    atms_axs: "ATM / AXS",
+    self_serve: "Self-serve",
+    in_person: "Personal"
   },
   zh: {
     construction: "建筑",
