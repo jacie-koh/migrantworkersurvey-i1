@@ -64,3 +64,41 @@ Set these Apps Script properties:
 - `INDIC_TRANSLATE_URL`: `https://your-indictrans2-api.example.com/translate`
 - `INDIC_API_KEY`: optional bearer token if you set `INDICTRANS2_API_KEY`
 
+## Docker Deploy
+
+Build:
+
+```bash
+docker build -t worker-survey-indictrans2 .
+```
+
+Run:
+
+```bash
+docker run -p 8000:8000 worker-survey-indictrans2
+```
+
+Run with a bearer token:
+
+```bash
+docker run \
+  -p 8000:8000 \
+  -e INDICTRANS2_API_KEY="choose-a-long-secret" \
+  worker-survey-indictrans2
+```
+
+After deploying this container to a public host, use:
+
+```text
+INDIC_TRANSLATE_URL=https://your-host.example.com/translate
+INDIC_API_KEY=choose-a-long-secret
+```
+
+Good hosting options:
+
+- Hugging Face Spaces with GPU
+- RunPod serverless or pod
+- Modal
+- A GPU VM
+
+CPU hosting can work for tiny tests, but it will be slow for real survey traffic.
