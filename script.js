@@ -787,6 +787,16 @@ const localizedOptions = {
     health_medicine: "स्वास्थ्य या दवा",
     entertainment: "मनोरंजन",
     debt_loan: "कर्ज या लोन भुगतान"
+    ,
+    convenience_store: "कन्वीनियंस स्टोर",
+    dorms: "छात्रावास",
+    retail_shops: "खुदरा दुकानें",
+    agent: "एजेंट",
+    roadshows: "रोडशो",
+    app: "ऐप",
+    atms_axs: "ATM / AXS",
+    self_serve: "स्वयं-सेवा",
+    in_person: "व्यक्तिगत रूप से"
   },
   bn: {
     construction: "নির্মাণ কাজ",
@@ -825,6 +835,16 @@ const localizedOptions = {
     health_medicine: "স্বাস্থ্য বা ওষুধ",
     entertainment: "বিনোদন",
     debt_loan: "ঋণ বা লোন পরিশোধ"
+    ,
+    convenience_store: "কনভেনিয়েন্স স্টোর",
+    dorms: "ডর্মস",
+    retail_shops: "রিটেইল দোকান",
+    agent: "এজেন্ট",
+    roadshows: "রোডশো",
+    app: "অ্যাপ",
+    atms_axs: "ATM / AXS",
+    self_serve: "সেল্ফ-সার্ভিস",
+    in_person: "সশরীরে"
   },
   ta: {
     construction: "கட்டுமானம்",
@@ -858,6 +878,16 @@ const localizedOptions = {
     health_medicine: "சுகாதாரம் அல்லது மருந்து",
     entertainment: "பொழுதுபோக்கு",
     debt_loan: "கடன் கட்டணம்"
+    ,
+    convenience_store: "சலுகை கடை",
+    dorms: "தங்கும் இடம் / டார்மிடரி",
+    retail_shops: "சில்லறை கடைகள்",
+    agent: "ஏஜென்ட்",
+    roadshows: "ரோட்ஷோக்கள்",
+    app: "அப்",
+    atms_axs: "ஏ.டி.எம் / AXS",
+    self_serve: "சுய சேவை",
+    in_person: "நேருக்கு நேர்"
   },
   te: {
     construction: "నిర్మాణం",
@@ -891,6 +921,16 @@ const localizedOptions = {
     health_medicine: "ఆరోగ్యం లేదా మందులు",
     entertainment: "వినోదం",
     debt_loan: "అప్పు లేదా లోన్ చెల్లింపు"
+    ,
+    convenience_store: "కన్వీనియన్స్ స్టోర్",
+    dorms: "డార్మ్స్",
+    retail_shops: "రిటైల్ షాపులు",
+    agent: "ఏజెంట్",
+    roadshows: "రోడ్ షోల్స్",
+    app: "యాప్",
+    atms_axs: "ATM / AXS",
+    self_serve: "స్వయంగా సేవ",
+    in_person: "నేరుగా"
   },
   mr: {
     construction: "बांधकाम",
@@ -924,6 +964,16 @@ const localizedOptions = {
     health_medicine: "आरोग्य किंवा औषध",
     entertainment: "मनोरंजन",
     debt_loan: "कर्ज भरणे"
+    ,
+    convenience_store: "कन्व्हिनियन्स स्टोअर",
+    dorms: "छात्रवासन",
+    retail_shops: "खुद्रा दुकाने",
+    agent: "एजंट",
+    roadshows: "रोडशो",
+    app: "अॅप",
+    atms_axs: "ATM / AXS",
+    self_serve: "स्वयं-सेवा",
+    in_person: "प्रत्यक्ष"
   },
   id: {
     construction: "Konstruksi",
@@ -957,6 +1007,16 @@ const localizedOptions = {
     health_medicine: "Kesehatan atau obat",
     entertainment: "Hiburan",
     debt_loan: "Pembayaran utang atau pinjaman"
+    ,
+    convenience_store: "Toko serba ada",
+    dorms: "Asrama",
+    retail_shops: "Toko ritel",
+    agent: "Agen",
+    roadshows: "Roadshow",
+    app: "Aplikasi",
+    atms_axs: "ATM / AXS",
+    self_serve: "Layanan mandiri",
+    in_person: "Langsung"
   },
   zh: {
     construction: "建筑",
@@ -1023,6 +1083,16 @@ const localizedOptions = {
     viber: "Viber",
     line: "LINE",
     regular_sms: "短信"
+    ,
+    convenience_store: "便利店",
+    dorms: "宿舍",
+    retail_shops: "零售商店",
+    agent: "代理",
+    roadshows: "路展",
+    app: "应用",
+    atms_axs: "ATM / AXS",
+    self_serve: "自助服务",
+    in_person: "现场服务"
   }
 };
 
