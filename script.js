@@ -2281,6 +2281,32 @@ const localizedOptions = {
   },
 };
 
+const originSuggestions = [
+  "Bihar",
+  "Uttar Pradesh",
+  "West Bengal",
+  "Tamil Nadu",
+  "Odisha",
+  "Telangana",
+  "Andhra Pradesh",
+  "Maharashtra",
+  "Kerala",
+  "Jharkhand",
+  "Rajasthan",
+  "Assam",
+  "Indonesia",
+  "Bangladesh",
+  "Myanmar",
+  "Vietnam",
+  "Thailand",
+  "Philippines",
+  "Malaysia",
+  "Cambodia"
+];
+
+const state = {
+  language: localStorage.getItem("surveyLanguage") || "hi"
+};
 
 const otherFieldMap = {
   workSector: "workSectorOther",
