@@ -90,7 +90,7 @@ function getSheet_() {
 }
 
 function providerForLanguage_(language) {
-  if (SEA_LION_LANGUAGES.indexOf(language) !== -1) return "sea-lion-or-languageapp";
+  if (SEA_LION_LANGUAGES.indexOf(language) !== -1) return "cloudflare-sealion-or-languageapp";
   if (INDIC_LANGUAGES.indexOf(language) !== -1) return "indic-or-languageapp";
   return "languageapp";
 }
@@ -113,12 +113,12 @@ function translateToEnglish_(text, language, provider) {
 
 function translateWithExternalProvider_(text, language, provider) {
   const properties = PropertiesService.getScriptProperties();
-  const endpoint = provider.indexOf("sea-lion") === 0
-    ? properties.getProperty("SEA_LION_TRANSLATE_URL")
-    : properties.getProperty("INDIC_TRANSLATE_URL");
-  const apiKey = provider.indexOf("sea-lion") === 0
-    ? properties.getProperty("SEA_LION_API_KEY")
-    : properties.getProperty("INDIC_API_KEY");
+  if (provider.indexOf("cloudflare-sealion") === 0) {
+    return translateWithCloudflareSeaLion_(text, language, properties);
+  }
+
+  const endpoint = properties.getProperty("INDIC_TRANSLATE_URL");
+  const apiKey = properties.getProperty("INDIC_API_KEY");
 
   if (!endpoint) return "";
 
@@ -142,6 +142,56 @@ function translateWithExternalProvider_(text, language, provider) {
   } catch (error) {
     return "";
   }
+}
+
+function translateWithCloudflareSeaLion_(text, language, properties) {
+  const endpoint = normalizeSeaLionEndpoint_(properties.getProperty("SEA_LION_TRANSLATE_URL"));
+  const apiKey = properties.getProperty("SEA_LION_API_KEY");
+
+  if (!endpoint) return "";
+
+  try {
+    const response = UrlFetchApp.fetch(endpoint, {
+      method: "post",
+      contentType: "application/json",
+      headers: apiKey ? { Authorization: "Bearer " + apiKey } : {},
+      muteHttpExceptions: true,
+      payload: JSON.stringify({
+        system: [
+          "You translate worker survey answers into clean English.",
+          "Return only the translated English text.",
+          "Do not explain, label, quote, summarize, or add extra details.",
+          "Keep names, phone numbers, telecom brands, places, and currency values unchanged."
+        ].join(" "),
+        prompt: [
+          "Source language code: " + language,
+          "Text:",
+          text
+        ].join("\n")
+      })
+    });
+
+    if (response.getResponseCode() < 200 || response.getResponseCode() >= 300) return "";
+
+    const parsed = JSON.parse(response.getContentText());
+    return cleanModelTranslation_(parsed.response || parsed.translation || parsed.translated_text || parsed.text || "");
+  } catch (error) {
+    return "";
+  }
+}
+
+function normalizeSeaLionEndpoint_(endpoint) {
+  if (!endpoint) return "";
+  const trimmed = String(endpoint).trim().replace(/\/+$/, "");
+  return /\/chat$/.test(trimmed) ? trimmed : trimmed + "/chat";
+}
+
+function cleanModelTranslation_(text) {
+  return String(text || "")
+    .trim()
+    .replace(/^["']|["']$/g, "")
+    .replace(/^English translation:\s*/i, "")
+    .trim();
 }
 
 function join_(value) {

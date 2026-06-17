@@ -47,7 +47,7 @@ with:
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec";
 ```
 
-## Optional SEA-LION / Indic Translation Routing
+## SEA-LION / Indic Translation Routing
 
 The Apps Script backend already chooses a provider group from `language_used`:
 
@@ -55,14 +55,48 @@ The Apps Script backend already chooses a provider group from `language_used`:
 - `hi`, `bn`, `te`, `mr`, `or`, `bho`, `ml` route to `INDIC_TRANSLATE_URL` if configured.
 - If no external endpoint is configured, it falls back to `LanguageApp.translate`.
 
-Optional Apps Script properties:
+### Cloudflare SEA-LION
 
-- `SEA_LION_TRANSLATE_URL`
-- `SEA_LION_API_KEY`
+This project is wired for [cloudflare/cf-sealion-api](https://github.com/cloudflare/cf-sealion-api), which exposes SEA-LION through `POST /chat`.
+
+1. Deploy the Cloudflare Worker from `cloudflare/cf-sealion-api`.
+2. Copy the Worker URL, for example:
+
+```text
+https://your-worker.workers.dev
+```
+
+3. Add this Apps Script property:
+
+- `SEA_LION_TRANSLATE_URL`: your Worker base URL or full `/chat` URL
+
+If you protect the Worker with a bearer token, also add:
+
+- `SEA_LION_API_KEY`: your token
+
+The backend sends Cloudflare SEA-LION:
+
+```json
+{
+  "system": "You translate worker survey answers into clean English...",
+  "prompt": "Source language code: ta\nText:\n..."
+}
+```
+
+and reads:
+
+```json
+{ "response": "English text" }
+```
+
+### Indic Provider
+
+Optional Apps Script properties for Hindi, Bengali, Telugu, Marathi, Odia, Bhojpuri, and Malayalam:
+
 - `INDIC_TRANSLATE_URL`
 - `INDIC_API_KEY`
 
-Expected translation endpoint response can be any of:
+Expected Indic endpoint response can be any of:
 
 ```json
 { "translation": "English text" }
